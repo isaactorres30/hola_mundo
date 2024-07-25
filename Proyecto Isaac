@@ -1,0 +1,38 @@
+#!/bin/bash
+
+echo "Auditoría de Sistema y Archivos"
+
+echo "Listado de archivos detallado:"
+ls -las
+echo ""
+
+read -p "Ingrese el directorio al que desea cambiar: " dir
+cd "$dir" || { echo "Directorio no encontrado"; exit 1; }
+
+read -p "Ingrese el nombre del archivo para ver su contenido: " file_to_cat
+cat "$file_to_cat"
+echo ""
+
+read -p "Ingrese el nombre del archivo para identificar su tipo: " file_to_identify
+file "$file_to_identify"
+echo ""
+
+echo "Uso de espacio en disco:"
+du -h
+echo ""
+
+read -p "Ingrese el nombre del archivo a buscar: " file_to_find
+find . -name "$file_to_find"
+echo ""
+
+read -p "Ingrese la palabra clave para buscar en los archivos: " keyword
+grep -r "$keyword" .
+echo ""
+
+read -p "Ingrese el nombre del archivo a ordenar: " file_to_sort
+sort "$file_to_sort"
+echo "Contenido del archivo ordenado:"
+sort "$file_to_sort"
+echo ""
+
+echo "Auditoría completada."
